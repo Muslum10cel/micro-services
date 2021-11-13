@@ -14,12 +14,14 @@ import io.moviecatalogservice.Models.CatalogItem;
 import io.moviecatalogservice.Models.CatalogItems;
 import io.moviecatalogservice.Models.Movies;
 import io.moviecatalogservice.Models.UserRating;
+import io.moviecatalogservice.Util.ServiceNameBuilder;
+import io.moviecatalogservice.Util.ServiceNames;
 
 @RestController
 @RequestMapping("/catalog")
 public class MovieCatalogResource {
     
-    private static final String RATING_URL = "http://localhost:1071/ratings/foo";
+    private static final String RATING_URL = "http://localhost:1071";
     private static final String MOVIES_URL = "http://localhost:1453/movies/foo";
     
     @Autowired
@@ -30,9 +32,9 @@ public class MovieCatalogResource {
         
         CatalogItems cItems = new CatalogItems();
         List<CatalogItem> cList = new ArrayList<>();
-        UserRating ratings =  restTemplate.getForObject(RATING_URL, UserRating.class);
+        UserRating ratings =  restTemplate.getForObject(ServiceNameBuilder.buildServiceName(ServiceNames.RATING_DATA_SERVICE_NAME, "/ratings/foo"), UserRating.class);
         ratings.getRatings().forEach(rate ->{
-            Movies movies = restTemplate.getForObject(MOVIES_URL, Movies.class);
+            Movies movies = restTemplate.getForObject(ServiceNameBuilder.buildServiceName(ServiceNames.MOVIE_INFO_SERVICE_NAME, "/movies/foo"), Movies.class);
             movies.getMovies().forEach(movie -> {
                 cList.add(new CatalogItem(movie.getName(), "Desc", rate.getRating()));
             });
