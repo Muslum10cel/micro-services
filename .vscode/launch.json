@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-RatingDataServiceApplication<ratingdataservice>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "io.ratingdataservice.ratingdataservice.RatingDataServiceApplication",
+            "projectName": "ratingdataservice",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MovieInfoServiceApplication<movieinfoservice>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "io.movieinfoservice.movieinfoservice.MovieInfoServiceApplication",
+            "projectName": "movieinfoservice",
+            "args": ""
+        }
+    ]
+}
