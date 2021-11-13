@@ -20,10 +20,7 @@ import io.moviecatalogservice.Util.ServiceNames;
 @RestController
 @RequestMapping("/catalog")
 public class MovieCatalogResource {
-    
-    private static final String RATING_URL = "http://localhost:1071";
-    private static final String MOVIES_URL = "http://localhost:1453/movies/foo";
-    
+        
     @Autowired
     private RestTemplate restTemplate;
 
